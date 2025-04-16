@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap');
+        .nanum-gothic-regular {
+            font-family: "Nanum Gothic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+          }
+        .c1{text-decoration: overline;}
+        .c2{text-decoration: underline;}
+        .c3{text-decoration: line-through;}
+        .c4{border-bottom: 2px solid black; width:90px;
+            padding-bottom:10px;}
+        *{padding: 0; margin:0; font-family: Nanum Gothic;}
+        #main{width:1000px; margin:50px auto;}
+        #main h2{font-size: 40px; margin:25px 0;}
+        #main table{width:1000px; border-top:1px solid #E1E1E1;
+        /* padding시 width값이 추가가 됨. padding값을 줘도 증가하지 않도록 */
+        box-sizing: border-box;
+    }
+        #main th,td{border-bottom:1px solid #E1E1E1;
+        height:79px;  text-align: left; padding-left:60px;}
+        #main th{width:250px; font-size: 19px; }
+        #main td{width:750px; font-size: 15px;  }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>소개</h2>
+        <img src="images/forest_concept_01_1.jpg" />
+        <table>
+            <tr>
+                <th>에코 리조트</th>
+                <td>자연과의 살아있는 교감을 통해 건강한 삶의 방식을 배우고 누릴 수 있는 곳</td>
+            </tr>
+            <tr>
+                <th>스파 리조트</th>
+                <td>해발고도 500m 숲 한가운데서 노천 스파를 즐길 수 있는 곳</td>
+            </tr>
+            <tr>
+                <th>멤버십 리조트</th>
+                <td>차별화된 쉼의 가치를 경험하고 프리미엄을 느낄 수 있는 곳</td>
+            </tr>
+        </table>
+    </div>
+    <h2>마무리</h2>
+    <!-- <h2 class="c1">회원가입</h2>
+    <h2 class="c2">회원가입</h2>
+    <h2 class="c3">회원가입</h2>
+    <h2 class="c4">회원가입</h2> -->
+</body>
+</html>
