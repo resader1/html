@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        h2{text-align: center;}
+        table{margin:0 auto; text-align: center;}
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:120px; height: 40px;}
+        th:nth-child(2){width:300px;}
+    </style>
+    
+</head>
+<body>
+    
+    <h2>산술연산</h2>
+    <script>
+        function dataBtn(){
+            
+            var hdata = "";
+            
+            for(let i=0; i<100;i++){
+                hdata += "<th>번호</th>";
+                hdata += "<th>제목</th>";
+                hdata += "<th>작성자</th>";
+                hdata += "<th>작성일</th>";
+                hdata += "</tr>";
+    
+                }
+            // html넣어야 하는데, innerText는 html을 text인식해서 입력됨
+            document.querySelector("#tbody").innerHTML = hdata;
+            
+
+        }
+        
+    </script>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+
+            </thead>
+            <tbody id="tbody">
+            <tr>
+
+                    <th>1</th>
+                    <th>홈페이지를 오픈했습니다</th>
+                    <th>관리자</th>
+                    <th>2025-04-21</th>
+                </tr>
+                </tbody>
+        </table>
+        <button onclick="databtn()">데이터 불러오기</button>
+    
+    
+    
+</body>
+</html>
