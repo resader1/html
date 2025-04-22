@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    
+    
+</head>
+<body>
+    <script>
+        
+        let ran1 = parseInt(10*Math.random())+1;
+        let i = 0;
+        let rlist = [];
+
+        while (i<5){
+            i++;
+            let input = prompt("값을 입력");
+            if(input>ran1){
+                alert("정답보다 큼","<br>");
+                rlist.push(input);
+            }
+            else if(input<ran1){
+                alert("정답보다 작음","<br>");
+                rlist.push(input);
+            }
+            else{alert("정답","<br>");
+            rlist.push(input);
+            break
+        }
+
+    }
+    document.write("정답",ran1,"<br>");
+    document.write("입력했던 숫자",rlist,"<br>");
+    for(let i=0;i<rlist.length;i++){
+        document.write(rlist[i],"<br>");
+    }
+
+
+
+
+        //입력한 값 - 배열 추가를 해서 마지막에 출력하면 됨.
+        //랜덤숫자 1개 생성
+        // 5번 시도 후 크다, 작다, 맞다 출력
+        // 정답 : 
+        //입력했던 값 모두 출력
+
+
+        /*
+        //파이썬 - 리스트 : 배열
+        let arr1 = [1,2,3,4,5];
+        document.write(arr1[2],"<br>");
+        //1,4,5 출력
+        document.write(arr1[0],"<br>");
+        document.write(arr1[3],"<br>");
+        document.write(arr1[4],"<br>");
+        */
+
+        // 배열추가 : push() 뒤에 추가, unshift() 앞에 추가,splice(2,0,'d') 원하는 위치에 값 추가
+        // 배열삭제 : pop() 뒤에 제거, shift() 앞에 추가,splice(2,0) 원하는 위치 제거
+        //splice(2,0,'d') 2번째 위치 'd'를 추가
+        //splice(2,0) 2번째 요소 1개를 제거
+        /*
+        let arr1 = [];
+        
+        
+        //1-100 push
+        for(let i=0;i<100;i++){
+            if ((i+1)%2!=0){
+                arr1.push(i+1);}
+            }
+            document.write("배열길이 : ",arr1.length,"<br>");
+            for(let i=0;i<arr1.length;i++){
+                document.write(arr1[i],"<br>");
+            }
+            
+            */
+    </script>
+    
+    
+    
+</body>
+</html>

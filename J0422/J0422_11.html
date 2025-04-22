@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    
+    
+</head>
+<body>
+    <script>
+        /*
+        for(let i=1;i<10;i++){
+            if(i%2==0) continue
+            document.write(i,"<br>");
+        }
+        */
+        /*
+        //삼항식 이용하여 최대값 출력
+        let a = 30;
+        let b = 50;
+        let c = 20;
+
+        // let result = a>b?a>c?a:c:b>c?b:c;
+        // max 함수 사용
+        let result = Math.max(a,b,c);
+
+        document.write(result,"<br>");
+
+        // 소수점 : round() 반올림,ceil() 올림,floor() 버림
+        document.write(Math.round(1.579),"<br>");
+
+        // 소수점 2자리에서 반올림 하시오. 18.79
+        let num = 18.79;
+        let rounded = num.toFixed(1);
+        document.write(rounded,"<br>");
+
+
+
+
+        //Math.random() : 0-1 사이의 소수점 0.0000000~9.9999999
+        // parseInt(10*Math.random())+1; // 1-10까지 랜덤숫자
+        
+        // 정수형 1-10까지 랜덤으로 숫자중 1개를 출력하시오.
+
+        document.write(parseInt(10*Math.random())+1,"<br>");
+        //1-45까지 랜덤숫자
+        document.write(parseInt(45*Math.random())+1,"<br>");
+
+        //0-9까지 랜덤숫자
+        document.write(parseInt(10*Math.random()),"<br>");
+        */
+        /*
+        //랜덤숫자 1-10까지 숫자 3개 출력.
+        document.write(parseInt(10*Math.random())+1,"<br>");
+        document.write(parseInt(10*Math.random())+1,"<br>");
+        document.write(parseInt(10*Math.random())+1,"<br>");
+        */
+
+        //크면 크다, 작으면 작다, 맞추면 정답이다 표시하기.
+        let i=0
+        let ran1 = parseInt(10*Math.random())+1;
+        while(i<5){
+            let input = prompt("숫자 입력 : ");
+            if(input>ran1){
+                alert("정답보다 큼");
+                continue
+                }
+                else if(input<ran1){
+                    alert("정답보다 작음");
+                    continue
+                }
+                else{
+                    document.write("정답");
+                    break
+                    
+                    
+                }
+                i++;
+
+        }
+
+
+
+
+
+
+        
+    </script>
+    
+    
+</body>
+</html>

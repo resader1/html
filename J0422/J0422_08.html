@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2{text-align:center;}
+        table,th,td{border:1px solid black; border-collapse:collapse;
+        text-align:center;}
+        table{margin:0 auto;}
+        th{background:#eee;}
+        th,td{width:200px;height:40px;}
+        
+        
+    </style>
+    <script>
+        let data = "";
+        for(let i=2;i<=9;i++){
+            for(let j=1;j<=9;j++)
+            document.write(`[${i}단]<br>`);
+            data += `<tr>`;
+            data += `<th>${i}단</th>`;
+            document.write(`${i}*${j}=${i*j}<br>`);
+            data += `<th>${j}</th>`;
+            data += `<th></th>;`
+            data += `<th>${i*j}</th>`
+        }
+        document.querySelector("#tbody").innerHTML = data;
+        
+    </script>
+    
+</head>
+<body>
+    <h2>게시판</h2>
+    <table>
+        <thead id="thead">
+            
+            <tr>
+                
+                <th>단</th>
+                <th>*</th>
+                <th>숫자</th>
+                <th>=</th>
+                <th>결과</th>
+                
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+            
+        </tbody>
+        
+    </table>
+    <script>
+        
+    </script>
+    
+</body>
+</html>
