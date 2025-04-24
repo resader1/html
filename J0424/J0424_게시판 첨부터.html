@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 제이쿼리 최신버전을 다운로드함 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <title>제이쿼리</title>
+    
+    <style>
+        *{margin:0;padding:0;}
+        #container{width:1200px; margin:30px auto; text-align: center;}
+        h2{font-size: 40px; margin-bottom:40px;}
+        table{width:1200px;margin:0 auto;}
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th{height: 50px; background: #eee;}
+        td{height:50px;}
+        th,td{height:40px;}
+        button{width:100px; height:35px; }
+        #input button{margin-top:5px;}
+        input:focus {outline:none;} /* 기본 focus 형태를 제거*/
+        input:focus {border:2px solid red;}
+        #input{margin-bottom:30px;}
+        #input div{font-size: 30px; margin-bottom:10px;}
+        #input input{width:500px; height:32px; padding-left:20px;}
+        
+    </style>
+    <script>
+        let number = 100;
+        //전역변수 선언
+        let hdata = ``;
+        let no = 1;
+        let flag = 0;
+        let boardNo = 0; // 수정, 삭제시 번호
+
+        $(function(){
+            //게시글 5개 리스트 출력함수
+            boardlist();
+
+            //id 위치에서 키보드 이벤트
+            $(document).on("keyup","#id",function(key){
+                if(key)
+            })
+
+            //저장버튼 이벤트
+            //이 구문 자체가 제이쿼리 구문이어서 함수 밖으로 뺄 수 없음
+            $(document).on("click","#save",function(){
+                if(flag==0){ //게시글 저장 버튼 클릭시
+                    
+                    let title = $("#title").val();
+                    let id = $("#id").val();
+                    //게시글 저장함수 호출
+                    boardOne(title,id)
+
+                }else{
+                    alert("수정저장버튼 클릭");
+                    $("#save").text("게시글 저장");
+                    
+                    flag = 0;
+                }
+                
+            }); //#save
+
+            //삭제버튼 이벤트
+            $(document).on("click",".deleteBtn",function(){
+                console.log($(this).closest("tr").attr("id"));
+                boardNo = $(this).closest("tr").attr("id");
+                if(confirm(`${boardNo}번 게시글을 삭제하시겠습니까?`)){
+                    $(`#${boardNo}`).remove();
+
+                }
+            }); // #deleteBtn
+
+            //수정버튼 이벤트
+            $(document).on("click",".updateBtn",function(){
+                alert("수정버튼 클릭")
+                console.log($(this).closest("tr").attr("id"));
+                flag = 1;
+                $("#save").text("수정저장");
+                console.log("flag : ",flag);
+                
+            }); // #updateBtn
+            
+
+            
+            
+
+        }); //제이쿼리 함수선언
+
+        //게시글 한개 추가함수
+        function boardOne(title,id){
+            let today = new Date(); //날짜 객체 선언
+            hdata=``; //hdata 초기화
+            hdata += `<tr id="${no}">`;
+            hdata += `<td>${no}</td>`;
+            hdata += `<td class="title">${title}</td>`;
+            hdata += `<td>${id}</td>`;
+            hdata += `<td>${today.getFullYear()}-${(today.getMonth()+1)<10?"0"+(today.getMonth()+1):(today.getMonth()+1)}-${today.getDate()}</td>`;
+            hdata += `<td>1</td>`;
+            hdata += `<td>`;
+            hdata += `<button type="button" class="updateBtn">수정</button>`;
+            hdata += `<button type="button" class="deleteBtn">삭제</button>`;
+            hdata += `</td>`;
+            hdata += `</tr>`;
+            no++; //no 1 증가
+            $("#tbody").prepend(hdata);  //게시글 1개 추가
+            //초기화
+            $("#title").val('');
+            $("#id").val('');
+            alert("게시글이 추가 되었습니다.");
+
+        }; //boardOne
+
+        //게시글 5개 리스트 출력함수
+        function boardlist(){
+            
+            for(let i=0;i<5;i++){
+                hdata += `<tr id="${i+1}">`;
+                hdata += `<td>${i+1}</td>`;
+                hdata += `<td class="title">이벤트 신청${i+1}</td>`;
+                hdata += `<td>관리자</td>`;
+                hdata += `<td>2025-04-24</td>`;
+                hdata += `<td>1</td>`;
+                hdata += `<td>`;
+                hdata += `<button type="button" class="updateBtn">수정</button>`;
+                hdata += `<button type="button" class="deleteBtn">삭제</button>`;
+                hdata += `</td>`;
+                hdata += `</tr>`;
+                no++;
+            }
+            $("#tbody").html(hdata);
+            
+            
+        };//추가함수 진행
+            
+    </script>
+    
+</head>
+
+<body>
+    <div id="container">
+
+        <h2>게시판</h2>
+        <div>글을 입력.</div>
+        <div id="input">
+            <input type="text" name="title" id="title" placeholder="제목을 입력."><br>
+            <input type="text" name="id" id="id" placeholder="작성자 입력."><br>
+            <button type="button" id="save">게시글 저장</button>
+        </div>
+
+        <table>
+            <colgroup>
+                <col width="10%">
+                <col width="*">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="20%">
+            </colgroup>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>기타</th>
+            </tr>
+            <tbody id="tbody">
+
+                <tr>
+                    <td>1</td>
+                    <td class="title">이벤트 신청</td>
+                    <td>관리자</td>
+                    <td>2025-04-24</td>
+                    <td>30</td>
+                    <td>
+                    <button type="button">수정</button>
+                    <button type="button">삭제</button>
+                    </td>
+                
+                </tr>
+        </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>

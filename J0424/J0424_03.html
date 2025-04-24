@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 제이쿼리 최신버전을 다운로드함 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <title>제이쿼리</title>
+    
+    <style>
+        *{margin:0;padding:0;}
+        #container{width:1200px; margin:30px auto; text-align: center;}
+        h2{font-size: 40px; margin-bottom:40px;}
+        table{width:1200px;margin:0 auto;}
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th{height: 50px; background: #eee;}
+        td{height:50px;}
+        th,td{height:40px;}
+        button{width:100px; height:35px; }
+        #input button{margin-top:5px;}
+        input:focus {outline:none;} /* 기본 focus 형태를 제거*/
+        input:focus {border:2px solid red;}
+        #input{margin-bottom:30px;}
+        #input div{font-size: 30px; margin-bottom:10px;}
+        #input input{width:500px; height:32px; padding-left:20px;}
+        
+    </style>
+    <script>
+        $(function(){
+            let hdata = ``;
+            let no = 1;
+            for(let i=0;i<5;i++){
+                hdata += `<tr id="${i+1}">`;
+                hdata += `<td>${i+1}</td>`;
+                hdata += `<td class="title">이벤트 신청</td>`;
+                hdata += `<td>관리자</td>`;
+                hdata += `<td>2025-04-24</td>`;
+                hdata += `<td>30</td>`;
+                hdata += `<td>`;
+                hdata += `<button type="button">수정</button>`;
+                hdata += `<button type="button">삭제</button>`;
+                hdata += `</td>`;
+                hdata += `</tr>`;
+                no++;
+
+            }
+            
+
+            //#tbody hdata를 추가
+            $("#tbody").html(hdata);
+
+            //save버튼 클릭
+            $("#save").click(function(){
+                console.log("제목 : ",$("#title").val());
+                console.log("작성자 : ",$("#id").val());
+                //게시글 추가
+                    hdata = ``;
+                    hdata += `<tr id="${no}">`;
+                    hdata += `<td>${no}</td>`;
+                    hdata += `<td class="title">${$("#title").val()}</td>`;
+                    hdata += `<td>${$("#id").val()}</td>`;
+                    hdata += `<td>2025-04-24</td>`;
+                    hdata += `<td>30</td>`;
+                    hdata += `<td>`;
+                    hdata += `<button type="button" class='updateBtn'>수정</button>`;
+                    hdata += `<button type="button" class="deleteBtn">삭제</button>`;
+                    hdata += `</td>`;
+                    hdata += `</tr>`;
+                    no++;
+
+                    // tbody 1개 게시글 추가
+                    $("#tbody").prepend(hdata);
+
+
+                // 입력창 초기화
+                $("#title").val("");
+                $("#id").val("");
+
+            });  //#save
+            
+                //정적이벤트
+                /*
+            $("h2").click(function(){
+                alert("삭제하심?")
+                console.log($(this));
+            });
+            */
+
+            //동적이벤트
+            $(document).on("click",".delBtn",function(){
+                let num = $(this).closest("tr").attr("id")
+                if(confirm(`${num}게시글을 삭제?`)){
+                    $(`#${num}`).remove();
+
+                };
+            });//delBtn
+
+
+        });//jquery
+        
+    </script>
+    
+</head>
+
+<body>
+    <div id="container">
+
+        <h2>게시판</h2>
+        <div>글을 입력.</div>
+        <div id="input">
+            <input type="text" name="title" id="title" placeholder="제목을 입력."><br>
+            <input type="text" name="id" id="id" placeholder="작성자 입력."><br>
+            <button type="button" id="save">저장</button>
+        </div>
+
+        <table>
+            <colgroup>
+                <col width="10%">
+                <col width="*">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="20%">
+            </colgroup>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>기타</th>
+            </tr>
+            <tbody id="tbody">
+
+                <tr>
+                    <td>1</td>
+                    <td class="title">이벤트 신청</td>
+                    <td>관리자</td>
+                    <td>2025-04-24</td>
+                    <td>30</td>
+                    <td>
+                    <button type="button">수정</button>
+                    <button type="button">삭제</button>
+                    </td>
+                
+                </tr>
+        </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
